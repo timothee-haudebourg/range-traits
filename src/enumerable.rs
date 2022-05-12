@@ -1,14 +1,12 @@
-use crate::Bounded;
-
 /// Type for which instances can be partially enumerated.
-pub trait PartialEnum: PartialOrd + Bounded {
+pub trait PartialEnum: Sized + PartialOrd {
     fn pred(&self) -> Option<Self>;
 
     fn succ(&self) -> Option<Self>;
 }
 
 /// Type for which instances can be entirely enumerated.
-pub trait Enum: PartialOrd + Bounded {
+pub trait Enum: Sized + PartialOrd {
     fn pred(&self) -> Option<Self>;
 
     fn succ(&self) -> Option<Self>;
