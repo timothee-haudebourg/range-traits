@@ -1,12 +1,14 @@
+use crate::MaybeBounded;
+
 /// Type for which instances can be partially enumerated.
-pub trait PartialEnum: Sized + PartialOrd {
+pub trait PartialEnum: PartialOrd + MaybeBounded {
 	fn pred(&self) -> Option<Self>;
 
 	fn succ(&self) -> Option<Self>;
 }
 
 /// Type for which instances can be entirely enumerated.
-pub trait Enum: Sized + PartialOrd {
+pub trait Enum: PartialOrd + MaybeBounded {
 	fn pred(&self) -> Option<Self>;
 
 	fn succ(&self) -> Option<Self>;

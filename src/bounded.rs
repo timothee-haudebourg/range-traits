@@ -1,19 +1,44 @@
-pub trait Bounded: Sized {
-	const MIN: Self;
-	const MAX: Self;
+pub trait MaybeBounded: Sized {
+	fn min() -> Option<Self>;
+	fn max() -> Option<Self>;
+}
+
+pub trait Bounded {
+	fn min() -> Self;
+	fn max() -> Self;
+}
+
+impl<T: Bounded> MaybeBounded for T {
+	fn min() -> Option<Self> {
+		Some(Self::min())
+	}
+
+	fn max() -> Option<Self> {
+		Some(Self::max())
+	}
 }
 
 impl Bounded for char {
-	const MIN: char = '\0';
-	const MAX: char = char::MAX;
+	fn min() -> Self {
+		'\0'
+	}
+
+	fn max() -> Self {
+		char::MAX
+	}
 }
 
 macro_rules! impl_int {
 	($($ty:ident),*) => {
 		$(
 			impl Bounded for $ty {
-				const MIN: Self = $ty::MIN;
-				const MAX: Self = $ty::MAX;
+				fn min() -> Self {
+					$ty::MIN
+				}
+
+				fn max() -> Self {
+					$ty::MAX
+				}
 			}
 		)*
 	};
@@ -25,8 +50,13 @@ macro_rules! impl_float {
 	($($ty:ident),*) => {
 		$(
 			impl Bounded for $ty {
-				const MIN: Self = $ty::NEG_INFINITY;
-				const MAX: Self = $ty::INFINITY;
+				fn min() -> Self {
+					$ty::NEG_INFINITY
+				}
+
+				fn max() -> Self {
+					$ty::INFINITY
+				}
 			}
 		)*
 	};
