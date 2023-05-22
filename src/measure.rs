@@ -5,14 +5,14 @@ use core::{
 
 /// Distance between singletons.
 #[allow(clippy::len_without_is_empty)]
-pub trait Measure<U = Self> {
+pub trait Measure<Rhs: ?Sized = Self> {
 	type Len: Default + Add<Output = Self::Len> + Sub<Output = Self::Len> + PartialEq;
 
 	/// Returns the length of the given element.
 	fn len(&self) -> Self::Len;
 
 	/// Returns the distance to the given other element.
-	fn distance(&self, other: &U) -> Self::Len;
+	fn distance(&self, other: &Rhs) -> Self::Len;
 }
 
 impl Measure for char {
