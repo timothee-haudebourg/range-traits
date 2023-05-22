@@ -26,19 +26,12 @@ impl<T: Enum> PartialEnum for T {
 
 impl Enum for char {
 	fn pred(&self) -> Option<Self> {
-		match self {
-			'\u{0000}' => None,
-			'\u{e000}' => Some('\u{d7ff}'),
-			_ => Some(unsafe { std::char::from_u32_unchecked(*self as u32 - 1) }),
-		}
+		('\u{0000}'..*self).next_back()
 	}
 
 	fn succ(&self) -> Option<Self> {
-		match self {
-			'\u{10ffff}' => None,
-			'\u{d7ff}' => Some('\u{e000}'),
-			_ => Some(unsafe { std::char::from_u32_unchecked(*self as u32 + 1) }),
-		}
+		// we skip one element since that's the current char, not its successor
+		(*self..='\u{10ffff}').nth(1)
 	}
 }
 
