@@ -1,10 +1,12 @@
+use core::{
+	mem,
+	ops::{Add, Sub},
+};
+
 /// Distance between singletons.
 #[allow(clippy::len_without_is_empty)]
 pub trait Measure<U = Self> {
-	type Len: Default
-		+ std::ops::Add<Output = Self::Len>
-		+ std::ops::Sub<Output = Self::Len>
-		+ PartialEq;
+	type Len: Default + Add<Output = Self::Len> + Sub<Output = Self::Len> + PartialEq;
 
 	/// Returns the length of the given element.
 	fn len(&self) -> Self::Len;
@@ -25,7 +27,7 @@ impl Measure for char {
 		let mut b = *other as u64;
 
 		if a > b {
-			std::mem::swap(&mut a, &mut b);
+			mem::swap(&mut a, &mut b);
 		}
 
 		if (..=0xd7ff).contains(&a) && (0xe000..).contains(&b) {
