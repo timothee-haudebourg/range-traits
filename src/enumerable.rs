@@ -45,11 +45,11 @@ macro_rules! impl_int {
 		$(
 			impl Enum for $ty {
 				fn pred(&self) -> Option<Self> {
-					self.checked_add(1)
+					self.checked_sub(1)
 				}
 
 				fn succ(&self) -> Option<Self> {
-					self.checked_sub(1)
+					self.checked_add(1)
 				}
 			}
 		)*
