@@ -1,11 +1,11 @@
 pub trait Bounded: Sized {
-    const MIN: Self;
-    const MAX: Self;
+	const MIN: Self;
+	const MAX: Self;
 }
 
 impl Bounded for char {
-    const MIN: char = '\0';
-    const MAX: char = char::MAX;
+	const MIN: char = '\0';
+	const MAX: char = char::MAX;
 }
 
 macro_rules! impl_int {
