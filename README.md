@@ -1,6 +1,6 @@
 # Range traits
 
-[![CI](https://github.com/timothee-haudebourg/range-traits/workflows/CI/badge.svg)](https://github.com/timothee-haudebourg/range-traits/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/timothee-haudebourg/range-traits/ci.yml?branch=main&style=flat-square)](https://github.com/timothee-haudebourg/range-traits/actions)
 [![Crate informations](https://img.shields.io/crates/v/range-traits.svg?style=flat-square)](https://crates.io/crates/range-traits)
 [![License](https://img.shields.io/crates/l/range-traits.svg?style=flat-square)](https://github.com/timothee-haudebourg/range-traits#license)
 [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square)](https://docs.rs/range-traits)
