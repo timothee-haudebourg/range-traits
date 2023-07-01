@@ -213,7 +213,7 @@ impl_f_measure!(f64, 0.0f64, f64::NEG_INFINITY, f64::INFINITY);
 
 #[cfg(feature = "ordered-float")]
 mod ordered_float {
-	use super::{Measure, PartialEnum};
+	use super::Measure;
 	use ordered_float::NotNan;
 
 	impl_f_measure!(
