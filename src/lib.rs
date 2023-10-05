@@ -9,6 +9,7 @@
 //! that define data-structures indexed by ranges.
 //! By implementing the traits defined in here, one can extend the type of
 //! ranges supported by `btree-range-map`, without necessarily depending on it.
+#![no_std]
 
 mod bounded;
 mod enumerable;
